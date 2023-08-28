@@ -1,0 +1,108 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "csv_upload",
+            "cwd": "csv_upload",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "csv_upload (profile mode)",
+            "cwd": "csv_upload",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "csv_upload (release mode)",
+            "cwd": "csv_upload",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "flavors_in_flutter",
+            "cwd": "flavors_in_flutter",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "flavors_in_flutter (profile mode)",
+            "cwd": "flavors_in_flutter",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "flavors_in_flutter (release mode)",
+            "cwd": "flavors_in_flutter",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "flutter-stripe-fruit-market-main",
+            "cwd": "flutter-stripe-fruit-market-main",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "flutter-stripe-fruit-market-main (profile mode)",
+            "cwd": "flutter-stripe-fruit-market-main",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "flutter-stripe-fruit-market-main (release mode)",
+            "cwd": "flutter-stripe-fruit-market-main",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "flutter_rss_feed",
+            "cwd": "flutter_rss_feed",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "flutter_rss_feed (profile mode)",
+            "cwd": "flutter_rss_feed",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "flutter_rss_feed (release mode)",
+            "cwd": "flutter_rss_feed",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "paypal_flutter",
+            "cwd": "paypal_flutter",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "paypal_flutter (profile mode)",
+            "cwd": "paypal_flutter",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "paypal_flutter (release mode)",
+            "cwd": "paypal_flutter",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        }
+    ]
+}
