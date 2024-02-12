@@ -1,0 +1,4 @@
+final LocalAuthentication _localAuthentication = LocalAuthentication();
+String _biometricType = '';
+
+

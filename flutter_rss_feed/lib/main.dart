@@ -17,19 +17,16 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'Top Rugby Stories'),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
-
- 
 
   final String title;
 
@@ -38,79 +35,70 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
- final Xml2Json xml2json = Xml2Json(); 
- List topStories =[];
+  final Xml2Json xml2json = Xml2Json();
+  List topStories = [];
 
-Future getArticles()async{
+  Future<void> getArticles() async {
+    final url = Uri.parse('https://www.rugbypass.com/feeds/rss/');
+    final response = await http.get(url);
 
-  final url = Uri.parse( 'https://www.rugbypass.com/feeds/rss/');
+    xml2json.parse(response.body);
 
-  final response = await http.get(url);
+    var jsondata = await xml2json.toGData();
+    var data = json.decode(jsondata);
 
-  xml2json.parse(response.body);
+    setState(() {
+      topStories = data['rss']['channel']['item'];
+    });
 
-  var jsondata = await xml2json.toGData();
-  var data = json.decode(jsondata);
-
-  topStories = data['rss']['channel']['item'];
-
-  print(topStories);
-
-
-}
-
-
+    print(topStories);
+  }
 
   @override
   Widget build(BuildContext context) {
-   
-
-
     return Scaffold(
       appBar: AppBar(
-        
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-       
         title: Text(widget.title),
       ),
       body: FutureBuilder(
         future: getArticles(),
-        builder: (BuildContext context, snapshot){
-          return SingleChildScrollView(
-            child: Column(children: [
-              Text('Top Rugby Stories'),
-ListView.builder(
-  shrinkWrap: true,
-  itemCount: topStories.length,
-  itemBuilder: (context, index){
-  return Padding(
-    padding: const EdgeInsets.all(8.0),
-    child: Card(
-      
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Row(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Image.network(topStories[index]['enclosure']['url'],height: 50),
-            ),
-            SizedBox(
-              
-              width: 280,child: Text(
-              
-              topStories[index]['title']['\$t'],maxLines: 2,overflow: TextOverflow.ellipsis,softWrap: true,),)
-            
-          ],
-        ),
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          return ListView.builder(
+            itemCount: topStories.length,
+            itemBuilder: (context, index) {
+              return Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Card(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Image.network(
+                            topStories[index]['enclosure']['url'],
+                            height: 50,
+                          ),
+                        ),
+                        SizedBox(
+                          width: 280,
+                          child: Text(
+                            topStories[index]['title']['\$t'],
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                            softWrap: true,
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              );
+            },
+          );
+        },
       ),
-    ),
-  );
-},)
-            ]),
-          ); 
-        })
-     
     );
   }
 }
